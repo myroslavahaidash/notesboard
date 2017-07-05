@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { BoardsComponent } from '../boards/boards.component';
 import { BoardComponent } from '../board/board.component';
+import { NoteComponent } from '../note/note.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,10 @@ const routes: Routes = [
   },
   {
     path: 'board/:id',
-    component: BoardComponent
+    component: BoardComponent,
+    children: [
+      {path: 'note/:noteId', component: NoteComponent}
+    ]
   },
   {
     path: '',

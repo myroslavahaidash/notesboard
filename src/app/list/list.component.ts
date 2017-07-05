@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+import { List } from '../shared/models/list';
+import { BoardsService } from "../boards.service";
 
 @Component({
   selector: 'app-list',
@@ -7,7 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  @Input() list: List;
+  @Output() listDeleted = new EventEmitter<List>();
+  newNoteTitle: String = "";
+
+  deleteList(){
+    this.listDeleted.emit(this.list);
+  }
+
+  createNote(){
+    this.boardsService.createNote(this.list, this.newNoteTitle);
+    this.newNoteTitle = "";
+  }
+
+  constructor(private boardsService: BoardsService) { }
 
   ngOnInit() {
   }

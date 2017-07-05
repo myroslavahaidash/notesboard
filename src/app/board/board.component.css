@@ -1,0 +1,9 @@
+.app-list{
+  float: left;
+  margin-right: 10px;
+  background-color: #BBDEFB;
+}
+
+.add-list-form{
+  float: left;
+}

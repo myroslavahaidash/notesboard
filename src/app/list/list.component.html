@@ -1,3 +1,16 @@
-<p>
-  list works!
-</p>
+<md-card-title>{{list.title}}</md-card-title>
+<a *ngFor = "let note of list.notes" [routerLink] = "['./note', note.id]">
+  <md-card class = "list-note">
+    <md-card-content>{{note.title}}</md-card-content>
+  </md-card>
+</a>
+<md-card>
+  <form (ngSubmit) = "createNote()">
+    <md-input-container>
+      <input mdInput type="text" name = "title" [(ngModel)]="newNoteTitle" placeholder = "Note title">
+    </md-input-container>
+    <button md-button type="submit">Add</button>
+  </form>
+</md-card>
+<button md-raised-button (click) = "deleteList()" class="delete-button">Delete list</button>
+

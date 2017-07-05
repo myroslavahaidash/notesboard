@@ -1,3 +1,15 @@
-<p>
-  board works!
-</p>
+<div *ngIf = "board">
+  <h2>{{board.title}}</h2>
+</div>
+<md-card *ngFor="let list of board.lists" class = "app-list">
+  <app-list [list] = "list" (listDeleted) = "deleteList($event)"></app-list>
+</md-card>
+<md-card class="add-list-form">
+  <form (ngSubmit) = "createList()">
+    <md-input-container>
+      <input mdInput type="text" name = "title" [(ngModel)]="newListTitle" placeholder = "List title">
+    </md-input-container>
+    <button md-button type="submit">Add</button>
+  </form>
+</md-card>
+<router-outlet></router-outlet>

@@ -1,3 +1,14 @@
-<p>
-  boards works!
-</p>
+<a *ngFor = "let board of boards" [routerLink]="['/board', board.id]">
+  <md-card class = "board-card">
+    <md-card-title>{{board.title}}</md-card-title>
+  </md-card>
+</a>
+<md-card class = "add-board-form">
+  <form (ngSubmit) = "createBoard()">
+    <md-input-container>
+      <input mdInput type="text" name = "title" [(ngModel)]="newBoardTitle" placeholder = "Board's title">
+    </md-input-container>
+    <button md-button type="submit">Add</button>
+  </form>
+</md-card>
+
