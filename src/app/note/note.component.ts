@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, Params, ParamMap } from '@angular/router';
 
 import { Note } from "../shared/models/note";
 import { BoardsService } from "../boards.service";
+import { MdDialog, MdDialogRef } from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
+import { DialogComponent } from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-note',
@@ -17,8 +19,17 @@ export class NoteComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private boardsService: BoardsService
+    private boardsService: BoardsService,
+    public dialog: MdDialog,
+    private router: Router
   ) {}
+
+  openDialog(){
+    const dialogRef: MdDialogRef<DialogComponent> =
+      this.dialog.open(DialogComponent, { data: this.note });
+    dialogRef.afterClosed().subscribe(() => this.router.navigate(['./board', this.boardId]));
+
+  }
 
   ngOnInit() {
     this.route.parent.params.subscribe(params => {
@@ -29,8 +40,6 @@ export class NoteComponent implements OnInit {
       .switchMap((params: Params) => this.boardsService.getNote(this.boardId, +params['noteId']))
       .subscribe((note: Note) => this.note = note);
 
-    //console.log(this.boardId);
-    //console.log(this.route.snapshot.paramMap.get('noteId'));
-    //console.log(this.note.title);
+    setTimeout(() => this.openDialog(), 0);
   }
 }

@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 
 import { Board } from '../shared/models/board';
 import { BoardsService } from '../boards.service';
+import {NoteComponent} from "../note/note.component";
 
 
 @Component({
@@ -30,12 +31,10 @@ export class BoardComponent implements OnInit{
     this.boardsService.deleteList(this.board, list);
   }
 
-
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.boardsService.getBoard(+params['id']))
       .subscribe((board: Board) => this.board = board);
-
   }
 }
 
