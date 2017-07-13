@@ -5,10 +5,6 @@ export class Board{
     public id: Number,
     public title: String,
     public lists: List[],
-    private currentNoteId: number = 0
+    public currentNoteId: number = 0
   ){};
-
-  getCurrentNoteId(): number {
-    return this.currentNoteId ++;
-  }
 }

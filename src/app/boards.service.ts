@@ -53,6 +53,16 @@ export class BoardsService {
 
   createNote(list: List, title: String){
     this.getBoard(list.boardId)
-      .subscribe(board => list.notes.push(new Note(board.getCurrentNoteId(), title, '', list.notes.length + 1)));
+      .subscribe(board => list.notes
+        .push(new Note(board.currentNoteId++, title, '', list.notes.length + 1, list.id)));
+  }
+
+
+  // засунути сплайс в сабскрайб
+  deleteNote(boardId: Number, note: Note){
+    this.getBoard(boardId).subscribe(board => {
+      let list = board.lists.find(list => list.id === note.listId);
+      list.notes.splice(list.notes.indexOf(note), 1);
+    });
   }
 }

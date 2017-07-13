@@ -1,3 +1,16 @@
-<p>
-  {{note.title}}
-</p>
+<h1 md-dialog-title>
+  {{data.note.title}}
+</h1>
+<md-dialog-content>
+  {{noteDescription}}
+</md-dialog-content>
+<button md-button *ngIf = "!(data.note.description)" (click) = 'showForm()'>Add description</button>
+<form (ngSubmit) = "addDescription()">
+  <md-input-container>
+    <textarea name = 'noteDescription' [(ngModel)] = 'noteDescription' mdInput></textarea>
+  </md-input-container>
+  <button md-button type="submit">Add</button>
+</form>
+<md-dialog-actions>
+  <button md-button md-dialog-close (click) = 'deleteNote()'>Delete note</button>
+</md-dialog-actions>

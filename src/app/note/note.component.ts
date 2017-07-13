@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Note } from "../shared/models/note";
 import { BoardsService } from "../boards.service";
@@ -26,9 +26,8 @@ export class NoteComponent implements OnInit {
 
   openDialog(){
     const dialogRef: MdDialogRef<DialogComponent> =
-      this.dialog.open(DialogComponent, { data: this.note });
+      this.dialog.open(DialogComponent,  {data:  {note: this.note, boardId: this.boardId}});
     dialogRef.afterClosed().subscribe(() => this.router.navigate(['./board', this.boardId]));
-
   }
 
   ngOnInit() {
@@ -40,6 +39,7 @@ export class NoteComponent implements OnInit {
       .switchMap((params: Params) => this.boardsService.getNote(this.boardId, +params['noteId']))
       .subscribe((note: Note) => this.note = note);
 
+    //Helps to avoid the ExpressionChangedAfterItHasBeenCheckedError in MdDialog
     setTimeout(() => this.openDialog(), 0);
   }
 }
