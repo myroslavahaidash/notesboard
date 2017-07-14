@@ -14,6 +14,7 @@ import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { BoardsService } from "./boards.service";
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { AutofocusDirective } from './autofocus.directive';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DialogComponent } from './dialog/dialog.component';
     NoteComponent,
     BoardsComponent,
     AppHeaderComponent,
-    DialogComponent
+    DialogComponent,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,

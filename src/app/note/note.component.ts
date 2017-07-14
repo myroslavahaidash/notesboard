@@ -26,7 +26,10 @@ export class NoteComponent implements OnInit {
 
   openDialog(){
     const dialogRef: MdDialogRef<DialogComponent> =
-      this.dialog.open(DialogComponent,  {data:  {note: this.note, boardId: this.boardId}});
+      this.dialog.open(DialogComponent,  {
+        data:  {note: this.note, boardId: this.boardId},
+        width: '400px'
+      });
     dialogRef.afterClosed().subscribe(() => this.router.navigate(['./board', this.boardId]));
   }
 

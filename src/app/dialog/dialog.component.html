@@ -1,16 +1,19 @@
-<h1 md-dialog-title>
+<h1 md-dialog-title *ngIf = 'hideTitleForm' (click) = 'showTitleForm()'>
   {{data.note.title}}
 </h1>
-<md-dialog-content>
-  {{noteDescription}}
+<md-input-container *ngIf = '!hideTitleForm'>
+  <input name = 'noteTitle'  [(ngModel)] = 'noteTitle' mdInput (blur) = 'editTitle()' autofocus>
+</md-input-container>
+
+<md-dialog-content *ngIf = 'hideDescriptionForm && data.note.description'>
+  <p (click) = 'showDescriptionForm()'>{{noteDescription}}</p>
 </md-dialog-content>
-<button md-button *ngIf = "!(data.note.description)" (click) = 'showForm()'>Add description</button>
-<form (ngSubmit) = "addDescription()">
-  <md-input-container>
-    <textarea name = 'noteDescription' [(ngModel)] = 'noteDescription' mdInput></textarea>
-  </md-input-container>
-  <button md-button type="submit">Add</button>
-</form>
+<button *ngIf="hideDescriptionForm && !data.note.description" md-button (click) = 'showDescriptionForm()'>Add description</button>
+
+<md-input-container *ngIf = '!hideDescriptionForm'>
+  <textarea name = 'noteDescription' [(ngModel)] = 'noteDescription' (blur) = 'addDescription()'  mdInput autofocus></textarea>
+</md-input-container>
+
 <md-dialog-actions>
-  <button md-button md-dialog-close (click) = 'deleteNote()'>Delete note</button>
+  <button md-raised-button md-dialog-close (click) = 'deleteNote()'>Delete note</button>
 </md-dialog-actions>

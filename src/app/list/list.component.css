@@ -1,3 +1,8 @@
+header{
+  display: flex;
+  justify-content: space-around;
+}
+
 .list-note{
   margin-bottom: 5px;
 }
@@ -9,7 +14,8 @@
   clear: both;
 }
 
-.add-note-button{
+.create-note-button{
   float: left;
+  padding: 0;
 }
 

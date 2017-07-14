@@ -10,9 +10,14 @@ import { BoardsService } from "../boards.service";
 })
 export class ListComponent implements OnInit {
 
+  constructor(
+    private boardsService: BoardsService
+  ) { }
+
   @Input() list: List;
   @Output() listDeleted = new EventEmitter<List>();
   newNoteTitle: String = "";
+  formHidden: boolean = true;
 
   deleteList(){
     this.listDeleted.emit(this.list);
@@ -21,11 +26,13 @@ export class ListComponent implements OnInit {
   createNote(){
     this.boardsService.createNote(this.list, this.newNoteTitle);
     this.newNoteTitle = "";
+    this.formHidden = true;
   }
 
-  constructor(private boardsService: BoardsService) { }
+  showForm(){
+    this.formHidden = false;
+  }
 
   ngOnInit() {
   }
-
 }
