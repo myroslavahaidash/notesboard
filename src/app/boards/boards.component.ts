@@ -11,7 +11,6 @@ import { BoardsService } from '../boards.service';
 export class BoardsComponent implements OnInit {
 
   boards: Board[] = [];
-  newBoardTitle: String = "";
 
   constructor( private boardsService: BoardsService ) { }
 
@@ -19,9 +18,8 @@ export class BoardsComponent implements OnInit {
     this.boardsService.getBoards().subscribe(boards => this.boards = boards);
   }
 
-  createBoard(): void{
-    this.boardsService.createBoard(this.newBoardTitle);
-    this.newBoardTitle = '';
+  createBoard(title): void {
+    this.boardsService.createBoard(title);
   }
 
   ngOnInit() {

@@ -1,0 +1,8 @@
+<div *ngIf = 'hideForm' (click) = 'showForm()'>
+  <ng-content></ng-content>
+</div>
+
+<md-input-container *ngIf = '!hideForm'>
+  <textarea name = 'text' [(ngModel)] = 'text' mdInput (blur) = 'editText()' autofocus></textarea>
+</md-input-container>
+

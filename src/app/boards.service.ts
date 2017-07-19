@@ -39,8 +39,12 @@ export class BoardsService {
     return note;
   }
 
-  createBoard(title: String): void{
+  createBoard(title: String): void {
     this.boards.push(new Board(this.boards.length + 1, title, []));
+  }
+
+  deleteBoard(board: Board) {
+    this.boards.splice(this.boards.indexOf(board), 1);
   }
 
   createList(board: Board, title: String){

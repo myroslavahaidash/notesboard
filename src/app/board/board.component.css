@@ -1,10 +1,24 @@
+header{
+  display: flex;
+  height: 30px;
+  padding: 10px 0;
+  margin-bottom: 15px;
+  background-color: #9CCC65;
+}
+header h2{
+  padding: 0 0 0 10px;
+  margin: 0;
+  line-height: 100%;
+  vertical-align: middle;
+  flex: 1;
+}
+
+.menu-button md-icon{
+  vertical-align: inherit;
+}
+
 .app-list{
   float: left;
   margin-right: 10px;
-  background-color: #BBDEFB;
-}
-
-.add-list-form{
-  float: left;
-  clear: right;
+  background-color: #8BC34A;
 }

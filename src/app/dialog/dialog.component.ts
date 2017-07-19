@@ -10,11 +10,6 @@ import {BoardsService} from "../boards.service";
   styleUrls: ['./dialog.component.css']
 })
 export class DialogComponent implements OnInit {
-  noteDescription: String = this.data.note.description;
-  noteTitle: String = this.data.note.title;
-  hideDescriptionForm: boolean = true;
-  hideTitleForm: boolean = true;
-
   constructor(
     private boardsService: BoardsService,
     @Inject(MD_DIALOG_DATA) public data) { }
@@ -23,24 +18,13 @@ export class DialogComponent implements OnInit {
     this.boardsService.deleteNote(this.data.boardId, this.data.note);
   }
 
-  showDescriptionForm(){
-    this.hideDescriptionForm = false;
+  editDescription(description) {
+    this.data.note.description = description;
   }
 
-  showTitleForm(){
-    this.hideTitleForm = false;
+  editTitle(title) {
+    this.data.note.title = title;
   }
-
-  addDescription(){
-    this.data.note.description = this.noteDescription;
-    this.hideDescriptionForm = true;
-  }
-
-  editTitle(){
-    this.data.note.title = this.noteTitle;
-    this.hideTitleForm = true;
-  }
-
 
   ngOnInit() {
   }

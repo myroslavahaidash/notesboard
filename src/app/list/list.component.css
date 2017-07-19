@@ -1,17 +1,18 @@
 header{
   display: flex;
-  justify-content: space-around;
+}
+
+header md-card-title{
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.menu-button md-icon{
+  vertical-align: inherit;
 }
 
 .list-note{
   margin-bottom: 5px;
-}
-
-.delete-button{
-  background-color: #90CAF9;
-  margin-top: 5px;
-  float: left;
-  clear: both;
 }
 
 .create-note-button{

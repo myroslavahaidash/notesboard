@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
 import { Board } from '../shared/models/board';
 import { BoardsService } from '../boards.service';
-import {NoteComponent} from "../note/note.component";
 
 
 @Component({
@@ -16,15 +15,19 @@ import {NoteComponent} from "../note/note.component";
 export class BoardComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
-    private boardsService: BoardsService
-  ){}
+    private boardsService: BoardsService,
+    private router: Router
+  ) {}
 
   board: Board;
-  newListTitle: String = "";
 
-  createList(): void{
-    this.boardsService.createList(this.board, this.newListTitle);
-    this.newListTitle = '';
+  deleteBoard() {
+    this.boardsService.deleteBoard(this.board);
+    this.router.navigate(['./boards']);
+  }
+
+  createList(title): void{
+    this.boardsService.createList(this.board, title);
   }
 
   deleteList(list): void{

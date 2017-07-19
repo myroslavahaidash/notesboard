@@ -16,21 +16,17 @@ export class ListComponent implements OnInit {
 
   @Input() list: List;
   @Output() listDeleted = new EventEmitter<List>();
-  newNoteTitle: String = "";
-  formHidden: boolean = true;
 
-  deleteList(){
+  deleteList() {
     this.listDeleted.emit(this.list);
   }
 
-  createNote(){
-    this.boardsService.createNote(this.list, this.newNoteTitle);
-    this.newNoteTitle = "";
-    this.formHidden = true;
+  editTitle(title) {
+    this.list.title = title;
   }
 
-  showForm(){
-    this.formHidden = false;
+  createNote(title) {
+    this.boardsService.createNote(this.list, title);
   }
 
   ngOnInit() {

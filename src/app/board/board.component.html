@@ -1,16 +1,25 @@
-<div *ngIf = "board">
-  <h2>{{board.title}}</h2>
-</div>
+<header>
+    <h2>{{board.title}}</h2>
+
+    <button md-icon-button [mdMenuTriggerFor]="menu" class="menu-button">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu #menu="mdMenu" xPosition="before">
+      <button md-menu-item (click) = "deleteBoard()">
+        <md-icon>delete</md-icon>
+        <span>Delete board</span>
+      </button>
+    </md-menu>
+</header>
+
+
 <md-card *ngFor="let list of board.lists" class = "app-list">
   <app-list [list] = "list" (listDeleted) = "deleteList($event)"></app-list>
 </md-card>
-<md-card class="add-list-form">
-  <form (ngSubmit) = "createList()">
-    <md-input-container>
-      <input mdInput type="text" name = "title" [(ngModel)]="newListTitle" placeholder = "List title">
-    </md-input-container>
-    <button md-button type="submit">Add</button>
-  </form>
-</md-card>
+<app-create-form (dataCreated)="createList($event)">
+  <span>Create list...</span>
+</app-create-form>
+
 <router-outlet></router-outlet>
+
 

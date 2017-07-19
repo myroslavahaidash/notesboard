@@ -15,6 +15,9 @@ import { BoardsService } from "./boards.service";
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { AutofocusDirective } from './autofocus.directive';
+import { CreateFormComponent } from './create-form/create-form.component';
+import { EditableTextComponent } from './editable-text/editable-text.component';
+
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import { AutofocusDirective } from './autofocus.directive';
     BoardsComponent,
     AppHeaderComponent,
     DialogComponent,
-    AutofocusDirective
+    AutofocusDirective,
+    CreateFormComponent,
+    EditableTextComponent
   ],
   imports: [
     BrowserModule,
