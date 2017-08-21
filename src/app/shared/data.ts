@@ -15,7 +15,7 @@ export const boards = [
     id: 1,
     title: "My First Board",
     lists: [{
-      id: 0,
+      id: 1,
       title: "First List",
       notes:[{
         id: 1,
@@ -64,7 +64,8 @@ export const boards = [
       position: 1,
       boardId: 1
     }],
-    currentNoteId: 6
+    currentNoteId: 6,
+    currentListId: 2
   },
   {
     id: 2,
@@ -120,7 +121,8 @@ export const boards = [
         boardId: 2
       }
     ],
-    currentNoteId: 6
+    currentNoteId: 6,
+    currentListId: 2
   },
   {
     id: 3,
@@ -175,7 +177,8 @@ export const boards = [
         position: 2,
         boardId: 3
       }],
-    currentNoteId: 6
+    currentNoteId: 6,
+    currentListId: 2
   }
 ];
 

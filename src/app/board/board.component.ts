@@ -34,6 +34,10 @@ export class BoardComponent implements OnInit{
     this.boardsService.deleteList(this.board, list);
   }
 
+  editTitle(title){
+    this.board.title = title;
+  }
+
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.boardsService.getBoard(+params['id']))

@@ -39,7 +39,7 @@ export class BoardsService {
     return note;
   }
 
-  createBoard(title: String): void {
+  createBoard(title: string): void {
     this.boards.push(new Board(this.boards.length + 1, title, []));
   }
 
@@ -48,7 +48,7 @@ export class BoardsService {
   }
 
   createList(board: Board, title: String){
-    board.lists.push(new List(board.lists.length + 1, title, [], board.lists.length +1, board.id));
+    board.lists.push(new List(++board.currentListId, title, [], board.lists.length +1, board.id));
   }
 
   deleteList(board: Board, list: List){
@@ -66,5 +66,17 @@ export class BoardsService {
       let list = board.lists.find(list => list.id === note.listId);
       list.notes.splice(list.notes.indexOf(note), 1);
     });
+  }
+
+  moveList(list: List, boardId: number){
+    this.getBoard(list.boardId)
+      .subscribe(board => this.deleteList(board, list));
+    this.getBoard(boardId)
+      .subscribe(board => {
+        list.id = ++board.currentListId;
+        list.boardId = boardId;
+        board.lists.push(list);
+        console.log(list.id);
+      });
   }
 }

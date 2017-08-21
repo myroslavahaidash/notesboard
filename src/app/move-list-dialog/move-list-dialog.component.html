@@ -1,0 +1,12 @@
+<form (ngSubmit)="moveList()">
+  <md-input-container>
+    <input type="text" mdInput [formControl] = "boardControl" [mdAutocomplete] = "auto">
+  </md-input-container>
+  <md-autocomplete #auto = "mdAutocomplete" [displayWith]="displayFn">
+    <md-option *ngFor="let board of filteredBoards | async" [value]="board">
+      {{ board.title }}
+    </md-option>
+  </md-autocomplete>
+  <button type="submit" md-button>Move</button>
+</form>
+

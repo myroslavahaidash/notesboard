@@ -1,5 +1,7 @@
 <header>
+  <app-editable-text (textEdited)="editTitle($event)" [text]="board.title">
     <h2>{{board.title}}</h2>
+  </app-editable-text>
 
     <button md-icon-button [mdMenuTriggerFor]="menu" class="menu-button">
       <md-icon>more_vert</md-icon>

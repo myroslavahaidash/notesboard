@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdDialogModule } from '@angular/material';
 
@@ -17,6 +17,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { EditableTextComponent } from './editable-text/editable-text.component';
+import { MoveListDialogComponent } from './move-list-dialog/move-list-dialog.component';
 
 
 
@@ -31,7 +32,8 @@ import { EditableTextComponent } from './editable-text/editable-text.component';
     DialogComponent,
     AutofocusDirective,
     CreateFormComponent,
-    EditableTextComponent
+    EditableTextComponent,
+    MoveListDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -39,10 +41,11 @@ import { EditableTextComponent } from './editable-text/editable-text.component';
     AppRouterRoutingModule,
     CustomMaterialModule,
     FormsModule,
-    MdDialogModule
+    MdDialogModule,
+    ReactiveFormsModule
   ],
   providers: [ BoardsService ],
   bootstrap: [ AppComponent ],
-  entryComponents: [ DialogComponent ]
+  entryComponents: [ DialogComponent, MoveListDialogComponent ]
 })
 export class AppModule { }

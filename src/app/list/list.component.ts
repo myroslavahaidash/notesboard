@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {MdDialog, MdDialogRef} from '@angular/material';
 
 import { List } from '../shared/models/list';
 import { BoardsService } from "../boards.service";
+import { MoveListDialogComponent } from "../move-list-dialog/move-list-dialog.component";
 
 @Component({
   selector: 'app-list',
@@ -11,7 +13,8 @@ import { BoardsService } from "../boards.service";
 export class ListComponent implements OnInit {
 
   constructor(
-    private boardsService: BoardsService
+    private boardsService: BoardsService,
+    public dialog: MdDialog
   ) { }
 
   @Input() list: List;
@@ -27,6 +30,10 @@ export class ListComponent implements OnInit {
 
   createNote(title) {
     this.boardsService.createNote(this.list, title);
+  }
+
+  openMoveListDialog(){
+    let dialogRef = this.dialog.open(MoveListDialogComponent, {data:  {list: this.list}});
   }
 
   ngOnInit() {
