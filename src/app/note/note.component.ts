@@ -6,7 +6,7 @@ import { BoardsService } from "../boards.service";
 import { MdDialog, MdDialogRef } from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
-import { DialogComponent } from "../dialog/dialog.component";
+import { NoteDialogComponent } from "../note-dialog/note-dialog.component";
 
 @Component({
   selector: 'app-note',
@@ -25,8 +25,8 @@ export class NoteComponent implements OnInit {
   ) {}
 
   openDialog(){
-    const dialogRef: MdDialogRef<DialogComponent> =
-      this.dialog.open(DialogComponent,  {
+    const dialogRef: MdDialogRef<NoteDialogComponent> =
+      this.dialog.open(NoteDialogComponent,  {
         data:  {note: this.note, boardId: this.boardId},
         width: '400px'
       });

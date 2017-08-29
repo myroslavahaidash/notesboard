@@ -26,6 +26,10 @@ export class BoardComponent implements OnInit{
     this.router.navigate(['./boards']);
   }
 
+  copyBoard(){
+    this.boardsService.copyBoard(this.board);
+  }
+
   createList(title): void{
     this.boardsService.createList(this.board, title);
   }

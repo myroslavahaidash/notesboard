@@ -27,7 +27,9 @@ export class MoveListDialogComponent implements OnInit {
   ) { }
 
   getBoards(): void {
-    this.boardsService.getBoards().subscribe(boards => this.boards = boards);
+    this.boardsService.getBoard(this.data.list.boardId).subscribe(currentBoard =>
+      this.boardsService.getBoards().subscribe(boards =>
+        this.boards = boards.filter(board => board.id !== currentBoard.id)));
   }
 
   filter(title: string): Board[] {
@@ -39,8 +41,7 @@ export class MoveListDialogComponent implements OnInit {
   }
 
   moveList(){
-    console.log("Component");
-    this.boardsService.moveList(this.data.list, this.boardControl.value.id);
+    this.boardsService.moveList(this.data.list, this.boardControl.value);
     this.dialogRef.close();
   }
 

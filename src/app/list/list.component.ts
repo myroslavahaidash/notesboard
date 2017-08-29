@@ -24,6 +24,10 @@ export class ListComponent implements OnInit {
     this.listDeleted.emit(this.list);
   }
 
+  copyList() {
+    this.boardsService.copyList(this.list);
+  }
+
   editTitle(title) {
     this.list.title = title;
   }

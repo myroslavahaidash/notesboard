@@ -1,0 +1,16 @@
+<app-editable-text (textEdited)="editTitle($event)" [text]="data.note.title">
+  <h1 md-dialog-title>{{data.note.title}}</h1>
+</app-editable-text>
+
+<button *ngIf="!data.note.description && descriptionForm.hideForm" md-button (click) = 'descriptionForm.showForm()'>Add description...</button>
+
+<app-editable-text (textEdited)="editDescription($event)" [text] = 'data.note.description' #descriptionForm>
+  <p *ngIf="data.note.description">
+    {{data.note.description}}
+  </p>
+</app-editable-text>
+
+<button md-raised-button md-dialog-close (click) = 'deleteNote()'>Delete note</button>
+<button md-raised-button md-dialog-close (click) = 'openMoveNoteDialog()'>Move note</button>
+<button md-raised-button md-dialog-close (click) = 'copyNote()'>Copy note</button>
+

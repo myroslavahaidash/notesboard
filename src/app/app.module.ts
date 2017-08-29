@@ -13,11 +13,13 @@ import { AppRouterRoutingModule } from './app-router/app-router-routing.module';
 import { CustomMaterialModule } from './custom-material/custom-material.module';
 import { BoardsService } from "./boards.service";
 import { AppHeaderComponent } from './app-header/app-header.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { NoteDialogComponent } from './note-dialog/note-dialog.component';
 import { AutofocusDirective } from './autofocus.directive';
 import { CreateFormComponent } from './create-form/create-form.component';
 import { EditableTextComponent } from './editable-text/editable-text.component';
 import { MoveListDialogComponent } from './move-list-dialog/move-list-dialog.component';
+import { MoveNoteDialogComponent } from './move-note-dialog/move-note-dialog.component';
+import { ChecklistComponent } from './checklist/checklist.component';
 
 
 
@@ -29,11 +31,13 @@ import { MoveListDialogComponent } from './move-list-dialog/move-list-dialog.com
     NoteComponent,
     BoardsComponent,
     AppHeaderComponent,
-    DialogComponent,
+    NoteDialogComponent,
     AutofocusDirective,
     CreateFormComponent,
     EditableTextComponent,
-    MoveListDialogComponent
+    MoveListDialogComponent,
+    MoveNoteDialogComponent,
+    ChecklistComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,10 @@ import { MoveListDialogComponent } from './move-list-dialog/move-list-dialog.com
   ],
   providers: [ BoardsService ],
   bootstrap: [ AppComponent ],
-  entryComponents: [ DialogComponent, MoveListDialogComponent ]
+  entryComponents: [
+    NoteDialogComponent,
+    MoveListDialogComponent,
+    MoveNoteDialogComponent
+  ]
 })
 export class AppModule { }
