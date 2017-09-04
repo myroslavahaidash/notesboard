@@ -8,7 +8,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class EditableTextComponent implements OnInit {
   hideForm: Boolean = true;
   @Output() textEdited = new EventEmitter();
-  @Input() text: String;
+  @Input() text: string;
+  value: string;
+  @Input() allowEmpty: boolean;
 
   constructor() { }
 
@@ -17,7 +19,11 @@ export class EditableTextComponent implements OnInit {
   }
 
   editText() {
-    this.textEdited.emit(this.text);
+    if(this.allowEmpty || this.text.trim()){
+      this.value = this.text.trim();
+      this.textEdited.emit(this.text.trim());
+    }
+    this.text = this.value;
     this.hideForm = true;
   }
 

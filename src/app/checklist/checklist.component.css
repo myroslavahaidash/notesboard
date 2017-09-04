@@ -1,0 +1,9 @@
+.checklistItem > button{
+  display: none;
+  margin: 0;
+}
+
+.checklistItem:hover > button{
+  display: inline-block;
+  margin: 0;
+}

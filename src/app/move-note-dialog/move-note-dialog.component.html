@@ -1,20 +1,7 @@
-<form (ngSubmit) = "moveNote()">
-  <md-input-container>
-    <input type="text" mdInput [formControl] = "boardControl" [mdAutocomplete] = "auto">
-  </md-input-container>
-  <md-autocomplete #auto = "mdAutocomplete" [displayWith]="displayBoardFn">
-    <md-option *ngFor="let board of filteredBoards | async" [value]="board">
-      {{ board.title }}
-    </md-option>
-  </md-autocomplete>
-
-  <md-input-container *ngIf = "lists">
-    <input type="text" mdInput [formControl] = "listControl" [mdAutocomplete] = "listInput">
-  </md-input-container>
-  <md-autocomplete #listInput = "mdAutocomplete" [displayWith]="displayListFn">
-    <md-option *ngFor="let list of filteredLists | async" [value]="list">
-      {{ list.title }}
-    </md-option>
-  </md-autocomplete>
-  <button type="submit" md-button>Move</button>
-</form>
+<md-select placeholder="Board" [(ngModel)]="selectedBoard" (change)="showLists($event)">
+  <md-option *ngFor="let board of boards" [value]="board">{{ board.title }}</md-option>
+</md-select>
+<md-select *ngIf="lists" placeholder="List" [(ngModel)]="selectedList">
+  <md-option *ngFor="let list of lists" [value]="list">{{ list.title }}</md-option>
+</md-select>
+<button md-button (click)="moveNote()" [disabled]="!selectedList">Move</button>

@@ -4,11 +4,19 @@
 
 <button *ngIf="!data.note.description && descriptionForm.hideForm" md-button (click) = 'descriptionForm.showForm()'>Add description...</button>
 
-<app-editable-text (textEdited)="editDescription($event)" [text] = 'data.note.description' #descriptionForm>
+<app-editable-text (textEdited)="editDescription($event)" [text] = 'data.note.description' [allowEmpty] = "true" #descriptionForm>
   <p *ngIf="data.note.description">
     {{data.note.description}}
   </p>
 </app-editable-text>
+
+<div *ngFor="let checklist of data.note.checklists">
+  <app-checklist [checklist]="checklist" (checklistDeleted) = "deleteChecklist($event)"></app-checklist>
+</div>
+
+<app-create-form (dataCreated)="addChecklist($event)">
+  <span>Add cheklist...</span>
+</app-create-form>
 
 <button md-raised-button md-dialog-close (click) = 'deleteNote()'>Delete note</button>
 <button md-raised-button md-dialog-close (click) = 'openMoveNoteDialog()'>Move note</button>

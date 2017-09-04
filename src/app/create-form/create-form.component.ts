@@ -21,9 +21,14 @@ export class CreateFormComponent implements OnInit {
   }
 
   create() {
-    this.dataCreated.emit(this.title);
-    this.title = "";
-    this.formHidden = true;
+    if(this.title.trim()){
+      this.dataCreated.emit(this.title.trim());
+      this.title = "";
+      this.formHidden = true;
+    }
+    else{
+      this.formHidden = true;
+    }
   }
 
   ngOnInit() {

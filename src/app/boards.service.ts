@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Board } from './shared/models/board';
 import { List } from './shared/models/list';
 import { Note } from './shared/models/note';
+import { Checklist } from "./shared/models/checklist";
+import { Todo } from "./shared/models/todo";
 
 import { boards } from './shared/data';
 
@@ -102,9 +104,7 @@ export class BoardsService {
   }
 
   createNote(list: List, title: String){
-    this.getBoard(list.boardId)
-      .subscribe(board => list.notes
-        .push(new Note(this.getCurrentNoteId(), title, '', list.notes.length + 1, list.id)));
+    list.notes.push(new Note(this.getCurrentNoteId(), title, '', [], list.notes.length + 1, list.id));
   }
 
   deleteNote(boardId: Number, note: Note){
@@ -132,5 +132,21 @@ export class BoardsService {
       board.lists.find(list => list.id === note.listId)
         .notes.push(Object.assign({}, note, {id: this.getCurrentNoteId()}));
     });
+  }
+
+  createTodo(checklist, title: string){
+    checklist.items.push(new Todo(title, false));
+  }
+
+  deleteTodo(checklist, todo){
+    checklist.items.splice(checklist.items.indexOf(todo), 1);
+  }
+
+  createChecklist(note: Note, title: string){
+    note.checklists.push(new Checklist(title, []));
+  }
+
+  deleteChecklist(note: Note, checklist: Checklist){
+    note.checklists.splice(note.checklists.indexOf(checklist), 1);
   }
 }

@@ -12,7 +12,9 @@ export class AutofocusDirective {
 
   ngAfterViewInit()
   {
-    this.renderer.invokeElementMethod(this.el.nativeElement, 'focus', []);
+    // use setTimeout here to fix ExpressionChangedAfterItHasBeenCheckedError
+    setTimeout(() =>
+      this.renderer.invokeElementMethod(this.el.nativeElement, 'focus', []), 0);
   }
 
 }

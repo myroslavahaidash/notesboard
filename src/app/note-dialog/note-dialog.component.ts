@@ -21,6 +21,10 @@ export class NoteDialogComponent implements OnInit {
     this.boardsService.deleteNote(this.data.boardId, this.data.note);
   }
 
+  deleteChecklist(checklist){
+    this.boardsService.deleteChecklist(this.data.note, checklist);
+  }
+
   copyNote(){
     this.boardsService.copyNote(this.data.note, this.data.boardId);
   }
@@ -31,6 +35,10 @@ export class NoteDialogComponent implements OnInit {
 
   editTitle(title) {
     this.data.note.title = title;
+  }
+
+  addChecklist(title): void {
+    this.boardsService.createChecklist(this.data.note, title);
   }
 
   openMoveNoteDialog(){

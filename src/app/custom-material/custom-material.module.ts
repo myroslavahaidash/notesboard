@@ -1,6 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdCardModule, MdInputModule, MdButtonModule, MdMenuModule, MdIconModule, MdAutocompleteModule } from '@angular/material';
+import {
+  MdCardModule,
+  MdInputModule,
+  MdButtonModule,
+  MdMenuModule,
+  MdIconModule,
+  MdCheckboxModule,
+  MdProgressBarModule,
+  MdSelectModule
+} from '@angular/material';
 
 @NgModule({
   imports: [
@@ -10,7 +19,9 @@ import { MdCardModule, MdInputModule, MdButtonModule, MdMenuModule, MdIconModule
     MdButtonModule,
     MdMenuModule,
     MdIconModule,
-    MdAutocompleteModule
+    MdCheckboxModule,
+    MdProgressBarModule,
+    MdSelectModule
   ],
   exports: [
     MdCardModule,
@@ -18,7 +29,9 @@ import { MdCardModule, MdInputModule, MdButtonModule, MdMenuModule, MdIconModule
     MdButtonModule,
     MdMenuModule,
     MdIconModule,
-    MdAutocompleteModule
+    MdCheckboxModule,
+    MdProgressBarModule,
+    MdSelectModule
   ],
   declarations: []
 })

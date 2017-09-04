@@ -1,3 +1,7 @@
-/**
- * Created by myroslava on 29.08.17.
- */
+export class Todo{
+  constructor(
+    public title: string,
+    public completed: boolean
+  ){
+  }
+}

@@ -20,11 +20,9 @@ import {List} from "../shared/models/list";
 export class MoveNoteDialogComponent implements OnInit {
 
   boards: Board[];
-  filteredBoards: Observable<Board[]>;
-  boardControl = new FormControl();
-  listControl = new FormControl();
+  selectedBoard;
+  selectedList;
   lists: List[];
-  filteredLists: Observable<List[]>;
 
   constructor(
     private boardsService: BoardsService,
@@ -36,41 +34,16 @@ export class MoveNoteDialogComponent implements OnInit {
       this.boardsService.getBoards().subscribe(boards =>this.boards = boards);
   }
 
-  filterBoards(title: string): Board[] {
-    return this.boards.filter(board => new RegExp(`^${title}`, 'gi').test(board.title));
-  }
-
-  filterLists(title: string): List[] {
-    return this.lists.filter(list => new RegExp(`^${title}`, 'gi').test(list.title));
-  }
-
-  displayBoardFn(board: Board): string {
-    return board ? board.title : '';
-  }
-
-  displayListFn(list: List): string{
-    return list ? list.title : ''
+  showLists(event){
+    this.lists = event.value.lists;
   }
 
   moveNote(){
-    this.boardsService.moveNote(this.data.note, this.data.boardId, this.listControl.value);
+    this.boardsService.moveNote(this.data.note, this.data.boardId, this.selectedList);
     this.dialogRef.close();
   }
 
   ngOnInit() {
     this.getBoards();
-
-    this.filteredBoards = this.boardControl.valueChanges
-      .startWith(null)
-      .map(board => board && typeof board === 'object' ? board.title : board)
-      .map(title => title ? this.filterBoards(title) : this.boards.slice());
-
-    this.boardControl.valueChanges.subscribe(board => {
-      this.lists = board.lists.filter(list => list.id !== this.data.note.listId);
-      this.filteredLists = this.listControl.valueChanges
-        .startWith(null)
-        .map(list => list && typeof list === 'object' ? list.title : list)
-        .map(title => title ? this.filterLists(title) : this.lists.slice());
-    });
   }
 }

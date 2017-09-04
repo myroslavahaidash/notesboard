@@ -13,18 +13,39 @@ export const boards = [
         id: 1,
         title: "This is the first note",
         description: "The best description you have ever seen",
+        checklists: [
+          {
+            title: "First checklist",
+            items: [
+              {
+                title: "First Todo",
+                completed: false
+              },
+              {
+                title: "Second Todo",
+                completed: false
+              },
+              {
+                title: "Third Todo",
+                completed: false
+              }
+            ]
+          }
+        ],
         position: 0,
         listId: 1},
       {
         id: 2,
         title: "This is the second note",
         description: "The best description you have ever seen",
+        checklists: [],
         position: 1,
         listId: 1},
       {
         id: 3,
         title: "This is the third note",
         description: "The best description you have ever seen",
+        checklists: [],
         position: 2,
         listId: 1}
       ],
@@ -38,18 +59,21 @@ export const boards = [
         id: 4,
         title: "This is the first note",
         description: "The best description you have ever seen",
+        checklists: [],
         position: 0,
         listId: 2},
         {
           id: 5,
           title: "This is the second note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 0,
           listId: 2},
         {
           id: 6,
           title: "This is the third note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 0,
           listId: 2}
       ],
@@ -68,18 +92,21 @@ export const boards = [
           id: 7,
           title: "This is the first note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 0,
           listId: 3},
         {
           id: 8,
           title: "This is the second note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 1,
           listId: 3},
         {
           id: 9,
           title: "This is the third note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 2,
           listId: 3}
       ],
@@ -94,18 +121,21 @@ export const boards = [
             id: 10,
             title: "This is the first note",
             description: "The best description you have ever seen",
+            checklists: [],
             position: 0,
             listId: 4},
           {
             id: 11,
             title: "This is note without description",
             description: "",
+            checklists: [],
             position: 1,
             listId: 4},
           {
             id: 12,
             title: "This is the third note",
             description: "The best description you have ever seen",
+            checklists: [],
             position: 2,
             listId: 4}
         ],
@@ -125,18 +155,21 @@ export const boards = [
           id: 13,
           title: "This is the first note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 0,
           listId: 5},
         {
           id: 14,
           title: "This is the second note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 1,
           listId: 5},
         {
           id: 15,
           title: "This is the third note",
           description: "The best description you have ever seen",
+          checklists: [],
           position: 2,
           listId: 5}
       ],
@@ -151,18 +184,21 @@ export const boards = [
             id: 16,
             title: "This is the first note",
             description: "The best description you have ever seen",
+            checklists: [],
             position: 0,
             listId: 6},
           {
             id: 17,
             title: "This is the second note",
             description: "The best description you have ever seen",
+            checklists: [],
             position: 1,
             listId: 6},
           {
             id: 18,
             title: "This is the third note",
             description: "The best description you have ever seen",
+            checklists: [],
             position: 2,
             listId: 6}
         ],
