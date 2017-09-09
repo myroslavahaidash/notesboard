@@ -6,6 +6,5 @@ export class List{
     public id: Number,
     public title: string,
     public notes: Note[],
-    public position: Number,
     public boardId: Number){};
 }

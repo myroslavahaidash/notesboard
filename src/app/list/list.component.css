@@ -1,22 +1,28 @@
 header{
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 400;
 }
 
-header md-card-title{
-  margin-bottom: 0;
-  flex: 1;
-}
-
-.menu-button md-icon{
-  vertical-align: inherit;
+.list-title{
+  flex: auto;
+  margin: 0;
+  font-weight: 300;
 }
 
 .list-note{
   margin-bottom: 5px;
 }
 
-.create-note-button{
-  float: left;
-  padding: 0;
+.create-button{
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.5;
+}
+
+.list-wrapper{
+  min-height: 10px;
 }
 

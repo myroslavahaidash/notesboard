@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MD_DIALOG_DATA } from '@angular/material';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
@@ -27,6 +27,7 @@ export class MoveNoteDialogComponent implements OnInit {
   constructor(
     private boardsService: BoardsService,
     public dialogRef: MdDialogRef<MoveNoteDialogComponent>,
+    public snackBar: MdSnackBar,
     @Inject(MD_DIALOG_DATA) public data
   ) {}
 
@@ -35,12 +36,16 @@ export class MoveNoteDialogComponent implements OnInit {
   }
 
   showLists(event){
-    this.lists = event.value.lists;
+    this.lists = event.value.lists.filter(list => list.id !== this.data.note.listId);
   }
 
   moveNote(){
     this.boardsService.moveNote(this.data.note, this.data.boardId, this.selectedList);
     this.dialogRef.close();
+    this.boardsService.moveList(this.data.list, this.selectedBoard);
+    this.snackBar.open('List moved', '', {
+      duration: 2000,
+    });
   }
 
   ngOnInit() {

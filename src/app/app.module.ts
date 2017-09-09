@@ -20,6 +20,7 @@ import { EditableTextComponent } from './editable-text/editable-text.component';
 import { MoveListDialogComponent } from './move-list-dialog/move-list-dialog.component';
 import { MoveNoteDialogComponent } from './move-note-dialog/move-note-dialog.component';
 import { ChecklistComponent } from './checklist/checklist.component';
+import {DragulaModule} from "ng2-dragula";
 
 
 
@@ -46,7 +47,8 @@ import { ChecklistComponent } from './checklist/checklist.component';
     CustomMaterialModule,
     FormsModule,
     MdDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DragulaModule
   ],
   providers: [ BoardsService ],
   bootstrap: [ AppComponent ],

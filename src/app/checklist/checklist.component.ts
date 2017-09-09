@@ -42,10 +42,12 @@ export class ChecklistComponent implements OnInit {
 
   editTodo(title, todo) {
     todo.title = title;
+    this.boardsService.save();
   }
 
   editTitle(title){
     this.checklist.title = title;
+    this.boardsService.save();
   }
 
   deleteItem(todo){

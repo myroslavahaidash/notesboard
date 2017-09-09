@@ -1,24 +1,33 @@
-<app-editable-text (textEdited)="editTitle($event)" [text]="data.note.title">
-  <h1 md-dialog-title>{{data.note.title}}</h1>
-</app-editable-text>
+<div class = "note-title">
+  <app-editable-text (textEdited)="editTitle($event)" [text]="data.note.title">
+    {{data.note.title}}
+  </app-editable-text>
+</div>
+<div class="note-wrapper">
+  <div class="note-content">
+    <button *ngIf="!data.note.description && descriptionForm.hideForm" class="add-description-button"
+            md-button (click) = 'descriptionForm.showForm()'>Add description...</button>
 
-<button *ngIf="!data.note.description && descriptionForm.hideForm" md-button (click) = 'descriptionForm.showForm()'>Add description...</button>
+    <app-editable-text (textEdited)="editDescription($event)" [text] = 'data.note.description' [rowsNumber]="5" [allowEmpty] = "true" #descriptionForm>
+      <span *ngIf="data.note.description">
+        {{data.note.description}}
+      </span>
+    </app-editable-text>
 
-<app-editable-text (textEdited)="editDescription($event)" [text] = 'data.note.description' [allowEmpty] = "true" #descriptionForm>
-  <p *ngIf="data.note.description">
-    {{data.note.description}}
-  </p>
-</app-editable-text>
+    <md-card *ngFor="let checklist of data.note.checklists">
+      <app-checklist [checklist]="checklist" (checklistDeleted) = "deleteChecklist($event)"></app-checklist>
+    </md-card>
 
-<div *ngFor="let checklist of data.note.checklists">
-  <app-checklist [checklist]="checklist" (checklistDeleted) = "deleteChecklist($event)"></app-checklist>
+    <app-create-form (dataCreated)="addChecklist($event)">
+      <span>Add cheklist...</span>
+    </app-create-form>
+  </div>
+  <div class="note-menu">
+    <button class="menu-button" md-raised-button md-dialog-close (click) = 'deleteNote()'>DELETE</button>
+    <button class="menu-button" md-raised-button md-dialog-close (click) = 'openMoveNoteDialog()'>MOVE</button>
+    <button class="menu-button" md-raised-button md-dialog-close (click) = 'copyNote()'>COPY</button>
+  </div>
+
 </div>
 
-<app-create-form (dataCreated)="addChecklist($event)">
-  <span>Add cheklist...</span>
-</app-create-form>
-
-<button md-raised-button md-dialog-close (click) = 'deleteNote()'>Delete note</button>
-<button md-raised-button md-dialog-close (click) = 'openMoveNoteDialog()'>Move note</button>
-<button md-raised-button md-dialog-close (click) = 'copyNote()'>Copy note</button>
 

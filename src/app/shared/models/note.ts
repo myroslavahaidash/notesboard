@@ -6,7 +6,6 @@ export class Note{
     public title: String,
     public description: String,
     public checklists: Checklist[],
-    public position: Number,
     public listId: Number
   ){};
 }

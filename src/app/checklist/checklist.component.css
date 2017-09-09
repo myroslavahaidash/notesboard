@@ -1,3 +1,28 @@
+header{
+  display: flex;
+  margin: 0;
+  align-items: center;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+button{
+  opacity: 0.6;
+}
+
+app-editable-text{
+  flex: auto;
+}
+
+.checklistItem{
+  display: flex;
+  flex-direction: row;
+}
+
+md-checkbox{
+  line-height: 42px;
+}
+
 .checklistItem > button{
   display: none;
   margin: 0;

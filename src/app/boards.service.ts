@@ -15,12 +15,18 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BoardsService {
-  boards: Board[] = boards;
+  boards: Board[];
   currentBoardId: number = 3;
   currentListId: number = 6;
   currentNoteId: number = 18;
 
-  constructor() { }
+  constructor() {
+    this.boards = JSON.parse(localStorage.getItem("notesboard_boards")) || boards;
+  }
+
+  save(){
+    localStorage.setItem("notesboard_boards", JSON.stringify(this.boards));
+  }
 
   getCurrentBoardId(){
     return ++this.currentBoardId;
@@ -58,10 +64,12 @@ export class BoardsService {
 
   createBoard(title: string): void {
     this.boards.push(new Board(this.getCurrentBoardId(), title, []));
+    this.save();
   }
 
   deleteBoard(board: Board) {
     this.boards.splice(this.boards.indexOf(board), 1);
+    this.save();
   }
 
   copyBoard(board: Board){
@@ -79,10 +87,12 @@ export class BoardsService {
               }))
           }))
       }));
+    this.save();
   }
 
   createList(board: Board, title: string){
-    board.lists.push(new List(this.getCurrentListId(), title, [], board.lists.length +1, board.id));
+    board.lists.push(new List(this.getCurrentListId(), title, [], board.id));
+    this.save();
   }
 
   copyList(list: List){
@@ -96,21 +106,25 @@ export class BoardsService {
             id: this.getCurrentNoteId(),
             listId: list.id
           }))
-      })))
+      })));
+    this.save();
   }
 
   deleteList(board: Board, list: List){
     board.lists.splice(board.lists.indexOf(list), 1);
+    this.save();
   }
 
   createNote(list: List, title: String){
-    list.notes.push(new Note(this.getCurrentNoteId(), title, '', [], list.notes.length + 1, list.id));
+    list.notes.push(new Note(this.getCurrentNoteId(), title, '', [], list.id));
+    this.save();
   }
 
   deleteNote(boardId: Number, note: Note){
     this.getBoard(boardId).subscribe(board => {
       const list = board.lists.find(list => list.id === note.listId);
       list.notes.splice(list.notes.indexOf(note), 1);
+      this.save();
     });
   }
 
@@ -119,34 +133,41 @@ export class BoardsService {
       .subscribe(board => this.deleteList(board, list));
     list.boardId = board.id;
     board.lists.push(list);
+    this.save();
   }
 
   moveNote(note: Note, currentBoardId: number, list: List){
     this.deleteNote(currentBoardId, note);
     note.listId = list.id;
     list.notes.push(note);
+    this.save();
   }
 
   copyNote(note: Note, boardId: number){
     this.getBoard(boardId).subscribe(board => {
       board.lists.find(list => list.id === note.listId)
         .notes.push(Object.assign({}, note, {id: this.getCurrentNoteId()}));
+      this.save();
     });
   }
 
   createTodo(checklist, title: string){
     checklist.items.push(new Todo(title, false));
+    this.save();
   }
 
   deleteTodo(checklist, todo){
     checklist.items.splice(checklist.items.indexOf(todo), 1);
+    this.save();
   }
 
   createChecklist(note: Note, title: string){
     note.checklists.push(new Checklist(title, []));
+    this.save();
   }
 
   deleteChecklist(note: Note, checklist: Checklist){
     note.checklists.splice(note.checklists.indexOf(checklist), 1);
+    this.save();
   }
 }

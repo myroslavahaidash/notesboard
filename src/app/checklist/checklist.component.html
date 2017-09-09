@@ -1,9 +1,12 @@
-<app-editable-text (textEdited)="editTitle($event)" [text]="checklist.title">
-  <h4>{{checklist.title}}</h4>
-</app-editable-text>
-<button md-icon-button (click) = "deleteChecklist()">
-  <md-icon>delete</md-icon>
-</button>
+<header>
+  <app-editable-text (textEdited)="editTitle($event)" [text]="checklist.title">
+    {{checklist.title}}
+  </app-editable-text>
+  <button md-icon-button (click) = "deleteChecklist()">
+    <md-icon>delete</md-icon>
+  </button>
+</header>
+
 
 <p>{{progress}}%</p>
 <md-progress-bar [value]="progress"></md-progress-bar>
@@ -12,14 +15,14 @@
   <app-editable-text (textEdited)="editTodo($event, todo)" [text]="todo.title" #editableItem>
     <md-checkbox (change) = "changeCheckedCount($event, todo)" (click)="blockClicksOnItems($event)">{{todo.title}}</md-checkbox>
   </app-editable-text>
-  <button md-icon-button (click) = "deleteItem(todo)">
-    <md-icon>clear</md-icon>
-  </button>
   <button md-icon-button (click) = "editableItem.showForm()">
     <md-icon>edit</md-icon>
+  </button>
+  <button md-icon-button (click) = "deleteItem(todo)">
+    <md-icon>clear</md-icon>
   </button>
 </div>
 
 <app-create-form (dataCreated)="addItem($event)">
-  <span>Add item...</span>
+  Add item...
 </app-create-form>

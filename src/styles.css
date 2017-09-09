@@ -1,8 +1,9 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 body{
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #DCEDC8;
+  margin: 0;
+  font-family: Roboto, sans-serif;
+  background-color: #FAFAFA;
 }
 
 a{
@@ -10,7 +11,23 @@ a{
   text-decoration: none;
 }
 
+a:focus{
+  outline: none;
+}
+
 
 .mat-input-infix {
   border-top: none !important;
+}
+
+.cdk-global-overlay-wrapper {
+  align-items: center;
+  flex-direction: column;
+  overflow: auto;
+  justify-content: inherit !important;
+}
+
+.cdk-overlay-pane {
+  margin: auto;
+  overflow: auto;
 }

@@ -1,4 +1,35 @@
+div{
+  max-width: 100%;
+  word-break: break-all;
+}
+
+div:hover{
+  cursor: pointer;
+}
+
 md-input-container{
   padding: 0;
   margin: 0;
+  width: 100%;
 }
+
+textarea{
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+md-input-container >>> .mat-input-infix{
+  padding: 0;
+}
+
+md-input-container >>> .mat-input-wrapper{
+  padding: 0;
+}
+
+md-input-container >>> .mat-input-underline{
+  bottom: -3px;
+}
+
+
+

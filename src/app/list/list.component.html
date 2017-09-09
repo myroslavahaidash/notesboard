@@ -1,6 +1,6 @@
 <header>
-  <app-editable-text (textEdited)="editTitle($event)" [text]="list.title">
-    <md-card-title>{{list.title}}</md-card-title>
+  <app-editable-text (textEdited)="editTitle($event)" [text]="list.title" class="list-title">
+    {{list.title}}
   </app-editable-text>
 
   <button md-icon-button [mdMenuTriggerFor]="menu" class="menu-button">
@@ -21,15 +21,17 @@
     </button>
   </md-menu>
 </header>
-
-<a *ngFor = "let note of list.notes" [routerLink] = "['./note', note.id]">
-  <md-card class = "list-note">
-    <md-card-content>{{note.title}}</md-card-content>
-  </md-card>
-</a>
-
+<div [dragula]='"list"' [dragulaModel]='list.notes' class="list-wrapper">
+  <div *ngFor = "let note of list.notes" [attr.data-item-id]="note.id">
+    <a [routerLink] = "['./note', note.id]">
+      <md-card class = "list-note">
+        <md-card-content>{{note.title}}</md-card-content>
+      </md-card>
+    </a>
+  </div>
+</div>
 <app-create-form (dataCreated)="createNote($event)">
-  <span>Create note...</span>
+  <span class="create-button">Create note...</span>
 </app-create-form>
 
 

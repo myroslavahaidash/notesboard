@@ -1,6 +1,6 @@
 <header>
-  <app-editable-text (textEdited)="editTitle($event)" [text]="board.title">
-    <h2>{{board.title}}</h2>
+  <app-editable-text (textEdited)="editTitle($event)" [text]="board.title" class="board-title">
+    {{board.title}}
   </app-editable-text>
 
     <button md-icon-button [mdMenuTriggerFor]="menu" class="menu-button">
@@ -18,13 +18,14 @@
     </md-menu>
 </header>
 
-
-<md-card *ngFor="let list of board.lists" class = "app-list">
-  <app-list [list] = "list" (listDeleted) = "deleteList($event)"></app-list>
-</md-card>
-<app-create-form (dataCreated)="createList($event)">
-  <span>Create list...</span>
-</app-create-form>
+<div class="lists-wrapper">
+  <div *ngFor="let list of board.lists" class = "app-list">
+    <app-list [list] = "list" (listDeleted) = "deleteList($event)"></app-list>
+  </div>
+  <app-create-form (dataCreated)="createList($event)">
+    <span class="create-button">Create list...</span>
+  </app-create-form>
+</div>
 
 <router-outlet></router-outlet>
 

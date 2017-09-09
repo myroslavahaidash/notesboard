@@ -8,7 +8,8 @@ import {
   MdIconModule,
   MdCheckboxModule,
   MdProgressBarModule,
-  MdSelectModule
+  MdSelectModule,
+  MdSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -21,7 +22,8 @@ import {
     MdIconModule,
     MdCheckboxModule,
     MdProgressBarModule,
-    MdSelectModule
+    MdSelectModule,
+    MdSnackBarModule
   ],
   exports: [
     MdCardModule,
@@ -31,7 +33,8 @@ import {
     MdIconModule,
     MdCheckboxModule,
     MdProgressBarModule,
-    MdSelectModule
+    MdSelectModule,
+    MdSnackBarModule
   ],
   declarations: []
 })

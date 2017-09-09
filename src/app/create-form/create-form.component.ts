@@ -12,7 +12,8 @@ export class CreateFormComponent implements OnInit {
 
   constructor() { }
 
-  showForm() {
+  showForm(event) {
+    event.preventDefault();
     this.formHidden = false;
   }
 

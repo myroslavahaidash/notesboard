@@ -1,3 +1,17 @@
+.wrapper{
+  margin-top: 10px;
+}
+
+md-input-container{
+  margin-top: 15px;
+}
+
+.create-button{
+  padding: 0;
+  text-align: left;
+  width: 100px;
+}
+
 md-card{
   float: left;
   clear: right;

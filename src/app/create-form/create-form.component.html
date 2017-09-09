@@ -1,16 +1,18 @@
-<button *ngIf = 'formHidden' md-button (click)="showForm()" class="create-note-button">
-  <ng-content></ng-content>
-</button>
-<div *ngIf="!formHidden">
-  <form (ngSubmit) = "create()">
-    <md-input-container>
-      <input mdInput type="text" name = "title" [(ngModel)]="title" placeholder = "Title" autofocus>
-    </md-input-container>
-    <button md-icon-button type="submit">
-      <md-icon>done</md-icon>
-    </button>
-    <button md-icon-button (click) = "hideForm()">
-      <md-icon>clear</md-icon>
-    </button>
-  </form>
+<div class="wrapper">
+  <a *ngIf = 'formHidden' href="#" (click)="showForm($event)">
+    <ng-content></ng-content>
+  </a>
+  <div *ngIf="!formHidden">
+    <form (ngSubmit) = "create()">
+      <md-input-container>
+        <input mdInput type="text" name = "title" [(ngModel)]="title" placeholder = "Title" autofocus>
+      </md-input-container>
+      <button md-icon-button type="submit">
+        <md-icon>done</md-icon>
+      </button>
+      <button md-icon-button (click) = "hideForm()">
+        <md-icon>clear</md-icon>
+      </button>
+    </form>
+  </div>
 </div>

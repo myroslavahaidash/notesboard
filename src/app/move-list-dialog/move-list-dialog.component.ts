@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MD_DIALOG_DATA } from '@angular/material';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -19,6 +19,7 @@ export class MoveListDialogComponent implements OnInit {
 
   constructor(
     private boardsService: BoardsService,
+    public snackBar: MdSnackBar,
     public dialogRef: MdDialogRef<MoveListDialogComponent>,
     @Inject(MD_DIALOG_DATA) public data
   ) { }
@@ -31,6 +32,9 @@ export class MoveListDialogComponent implements OnInit {
 
   moveList(){
     this.boardsService.moveList(this.data.list, this.selectedBoard);
+    this.snackBar.open('List moved', '', {
+      duration: 2000,
+    });
     this.dialogRef.close();
   }
 

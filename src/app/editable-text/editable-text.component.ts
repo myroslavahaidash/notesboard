@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'app-editable-text',
   templateUrl: './editable-text.component.html',
@@ -9,8 +10,9 @@ export class EditableTextComponent implements OnInit {
   hideForm: Boolean = true;
   @Output() textEdited = new EventEmitter();
   @Input() text: string;
-  value: string;
+  @Input() rowsNumber: number;
   @Input() allowEmpty: boolean;
+  value: string;
 
   constructor() { }
 

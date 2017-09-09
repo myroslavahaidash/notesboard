@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
+import { MD_DIALOG_DATA, MdDialog, MdDialogRef, MdSnackBar } from '@angular/material';
 
 import { MoveNoteDialogComponent } from "../move-note-dialog/move-note-dialog.component";
 
@@ -14,11 +14,15 @@ import {BoardsService} from "../boards.service";
 export class NoteDialogComponent implements OnInit {
   constructor(
     public dialog: MdDialog,
+    public snackBar: MdSnackBar,
     private boardsService: BoardsService,
     @Inject(MD_DIALOG_DATA) public data) { }
 
   deleteNote(){
     this.boardsService.deleteNote(this.data.boardId, this.data.note);
+    this.snackBar.open('Note deleted', '', {
+      duration: 2000,
+    });
   }
 
   deleteChecklist(checklist){
@@ -31,10 +35,12 @@ export class NoteDialogComponent implements OnInit {
 
   editDescription(description) {
     this.data.note.description = description;
+    this.boardsService.save();
   }
 
   editTitle(title) {
     this.data.note.title = title;
+    this.boardsService.save();
   }
 
   addChecklist(title): void {

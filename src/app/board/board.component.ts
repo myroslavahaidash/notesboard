@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -16,7 +17,8 @@ export class BoardComponent implements OnInit{
   constructor(
     private route: ActivatedRoute,
     private boardsService: BoardsService,
-    private router: Router
+    private router: Router,
+    public snackBar: MdSnackBar
   ) {}
 
   board: Board;
@@ -24,6 +26,9 @@ export class BoardComponent implements OnInit{
   deleteBoard() {
     this.boardsService.deleteBoard(this.board);
     this.router.navigate(['./boards']);
+    this.snackBar.open('Board deleted', '', {
+      duration: 2000,
+    });
   }
 
   copyBoard(){
@@ -36,10 +41,14 @@ export class BoardComponent implements OnInit{
 
   deleteList(list): void{
     this.boardsService.deleteList(this.board, list);
+    this.snackBar.open('List deleted', '', {
+      duration: 2000,
+    });
   }
 
   editTitle(title){
     this.board.title = title;
+    this.boardsService.save();
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
-<span *ngIf = 'hideForm' (click) = 'showForm()'>
+<div *ngIf = 'hideForm' (click) = 'showForm()'>
   <ng-content></ng-content>
-</span>
+</div>
 
 <md-input-container *ngIf = '!hideForm'>
-  <textarea name = 'text' [(ngModel)] = 'text' mdInput (blur) = 'editText()' autofocus rows="1"></textarea>
+  <textarea name = 'text' [(ngModel)] = 'text' mdInput (blur) = 'editText()' autofocus [rows] = "rowsNumber || 1"></textarea>
 </md-input-container>
