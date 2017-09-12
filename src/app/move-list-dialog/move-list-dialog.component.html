@@ -1,3 +1,4 @@
+<p>Choose a board to move this list into:</p>
 <md-select placeholder="Board" [(ngModel)]="selectedBoard">
   <md-option *ngFor="let board of boards" [value]="board">{{ board.title }}</md-option>
 </md-select>

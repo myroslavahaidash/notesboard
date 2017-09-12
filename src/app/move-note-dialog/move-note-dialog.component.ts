@@ -22,7 +22,7 @@ export class MoveNoteDialogComponent implements OnInit {
   boards: Board[];
   selectedBoard;
   selectedList;
-  lists: List[];
+  lists: List[] = [];
 
   constructor(
     private boardsService: BoardsService,
@@ -37,14 +37,15 @@ export class MoveNoteDialogComponent implements OnInit {
 
   showLists(event){
     this.lists = event.value.lists.filter(list => list.id !== this.data.note.listId);
+
+    this.selectedList = null;
   }
 
   moveNote(){
     this.boardsService.moveNote(this.data.note, this.data.boardId, this.selectedList);
     this.dialogRef.close();
-    this.boardsService.moveList(this.data.list, this.selectedBoard);
-    this.snackBar.open('List moved', '', {
-      duration: 2000,
+    this.snackBar.open('Note was moved to ' + this.selectedList.title + ' in ' + this.selectedBoard.title , '', {
+      duration: 3000,
     });
   }
 

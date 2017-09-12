@@ -16,16 +16,27 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class BoardsService {
   boards: Board[];
-  currentBoardId: number = 3;
-  currentListId: number = 6;
-  currentNoteId: number = 18;
+  currentBoardId: number = 0;
+  currentListId: number = 0;
+  currentNoteId: number = 0;
 
   constructor() {
     this.boards = JSON.parse(localStorage.getItem("notesboard_boards")) || boards;
+
+    const counters = JSON.parse(localStorage.getItem("notesboard_counters")) || {};
+
+    this.currentBoardId = counters.currentBoardId || 1;
+    this.currentListId = counters.currentListId || 3;
+    this.currentNoteId = counters.currentNoteId || 6;
   }
 
   save(){
     localStorage.setItem("notesboard_boards", JSON.stringify(this.boards));
+    localStorage.setItem("notesboard_counters", JSON.stringify({
+      currentBoardId: this.currentBoardId,
+      currentListId: this.currentListId,
+      currentNoteId: this.currentNoteId
+    }));
   }
 
   getCurrentBoardId(){

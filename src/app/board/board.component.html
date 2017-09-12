@@ -19,10 +19,8 @@
 </header>
 
 <div class="lists-wrapper">
-  <div *ngFor="let list of board.lists" class = "app-list">
-    <app-list [list] = "list" (listDeleted) = "deleteList($event)"></app-list>
-  </div>
-  <app-create-form (dataCreated)="createList($event)">
+  <app-list *ngFor="let list of board.lists" class = "app-list" [list] = "list" (listDeleted) = "deleteList($event)"></app-list>
+  <app-create-form (dataCreated)="createList($event)" class="create-list-form">
     <span class="create-button">Create list...</span>
   </app-create-form>
 </div>

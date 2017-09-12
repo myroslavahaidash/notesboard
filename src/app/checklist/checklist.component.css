@@ -1,3 +1,7 @@
+md-card{
+  margin: 15px 0;
+}
+
 header{
   display: flex;
   margin: 0;
@@ -10,6 +14,10 @@ button{
   opacity: 0.6;
 }
 
+md-progress-bar{
+  margin-bottom: 10px;
+}
+
 app-editable-text{
   flex: auto;
 }
@@ -17,10 +25,8 @@ app-editable-text{
 .checklistItem{
   display: flex;
   flex-direction: row;
-}
-
-md-checkbox{
-  line-height: 42px;
+  align-items: center;
+  min-height: 42px;
 }
 
 .checklistItem > button{

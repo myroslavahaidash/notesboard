@@ -1,8 +1,30 @@
-.board-card{
-  float: left;
-  margin-right: 20px;
+.wrapper{
+  display: flex;
+  justify-content: inherit;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.add-board-form{
-  float: left;
+.board-card{
+  width: 250px;
+  height: 60px;
+  margin: 0 10px 20px;
+}
+
+app-create-form {
+  margin-left: 10px;
+  padding: 0 25px;
+}
+
+app-create-form span {
+  text-decoration: underline;
+}
+
+md-card-title{
+  max-height: 50px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 20px;
 }

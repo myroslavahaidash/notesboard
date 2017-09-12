@@ -1,7 +1,8 @@
+<p>Choose a board and a list to move this note into:</p>
 <md-select placeholder="Board" [(ngModel)]="selectedBoard" (change)="showLists($event)">
   <md-option *ngFor="let board of boards" [value]="board">{{ board.title }}</md-option>
 </md-select>
-<md-select *ngIf="lists" placeholder="List" [(ngModel)]="selectedList">
+<md-select *ngIf="lists.length > 0" placeholder="List" [(ngModel)]="selectedList">
   <md-option *ngFor="let list of lists" [value]="list">{{ list.title }}</md-option>
 </md-select>
 <button md-button (click)="moveNote()" [disabled]="!selectedList">Move</button>

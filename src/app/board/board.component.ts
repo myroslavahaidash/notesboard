@@ -26,13 +26,16 @@ export class BoardComponent implements OnInit{
   deleteBoard() {
     this.boardsService.deleteBoard(this.board);
     this.router.navigate(['./boards']);
-    this.snackBar.open('Board deleted', '', {
+    this.snackBar.open('Board was deleted', '', {
       duration: 2000,
     });
   }
 
   copyBoard(){
     this.boardsService.copyBoard(this.board);
+    this.snackBar.open('Copy of this board was created', '', {
+      duration: 2000,
+    });
   }
 
   createList(title): void{
@@ -41,7 +44,7 @@ export class BoardComponent implements OnInit{
 
   deleteList(list): void{
     this.boardsService.deleteList(this.board, list);
-    this.snackBar.open('List deleted', '', {
+    this.snackBar.open('List was deleted', '', {
       duration: 2000,
     });
   }

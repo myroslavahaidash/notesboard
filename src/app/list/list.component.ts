@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 
 import { List } from '../shared/models/list';
 import { BoardsService } from "../boards.service";
 import { MoveListDialogComponent } from "../move-list-dialog/move-list-dialog.component";
-import {DragulaService} from "ng2-dragula/index";
+import { DragulaService } from "ng2-dragula/index";
 
 @Component({
   selector: 'app-list',
@@ -16,7 +16,8 @@ export class ListComponent implements OnInit {
   constructor(
     private boardsService: BoardsService,
     private dragulaService: DragulaService,
-    public dialog: MdDialog
+    public dialog: MdDialog,
+    public snackBar: MdSnackBar
   ) {
     dragulaService.dropModel.subscribe((value) => {
       this.onDropModel(value.slice(1));
@@ -46,6 +47,10 @@ export class ListComponent implements OnInit {
 
   copyList() {
     this.boardsService.copyList(this.list);
+    this.snackBar.open('Copy of this list was created', '', {
+      duration: 2000,
+    });
+
   }
 
   editTitle(title) {
@@ -55,6 +60,9 @@ export class ListComponent implements OnInit {
 
   createNote(title) {
     this.boardsService.createNote(this.list, title);
+    this.snackBar.open('Note was created', '', {
+      duration: 2000,
+    });
   }
 
   openMoveListDialog(){

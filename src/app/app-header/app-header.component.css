@@ -1,9 +1,15 @@
 .app-header{
-  background: #007c91;
-  padding: 10px;
+  background: #002984;
+  padding: 5px;
 }
 
-h3{
-  margin: 0;
-  font-weight: 700;
+.title{
+  margin: 0 auto;
+  text-align: center;
+  width: 105px;
+  padding: 2px;
+  background: #757de8;
+  border-radius: 2px;
+  font-weight: 300;
 }
+

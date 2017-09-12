@@ -20,7 +20,7 @@ export class NoteDialogComponent implements OnInit {
 
   deleteNote(){
     this.boardsService.deleteNote(this.data.boardId, this.data.note);
-    this.snackBar.open('Note deleted', '', {
+    this.snackBar.open('Note was deleted', '', {
       duration: 2000,
     });
   }
@@ -31,6 +31,9 @@ export class NoteDialogComponent implements OnInit {
 
   copyNote(){
     this.boardsService.copyNote(this.data.note, this.data.boardId);
+    this.snackBar.open('Copy of this note was created in the end of this list', '', {
+      duration: 3000,
+    });
   }
 
   editDescription(description) {

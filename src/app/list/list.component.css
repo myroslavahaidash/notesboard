@@ -4,16 +4,27 @@ header{
   align-items: center;
   margin-bottom: 10px;
   font-weight: 400;
+  flex: 0 0 auto;
+}
+
+app-create-form {
+  flex: 0 0 auto;
 }
 
 .list-title{
   flex: auto;
   margin: 0;
   font-weight: 300;
+  white-space: normal;
 }
 
 .list-note{
   margin-bottom: 5px;
+}
+
+.list-note md-card-content {
+  white-space: normal;
+  word-break: break-word;
 }
 
 .create-button{
@@ -24,5 +35,11 @@ header{
 
 .list-wrapper{
   min-height: 10px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.list-wrapper > div {
+  margin-right: 15px;
 }
 

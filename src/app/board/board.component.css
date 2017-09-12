@@ -1,9 +1,9 @@
 header{
   display: flex;
+  align-items: center;
   flex-direction: row;
-  padding: 10px 0;
   margin-bottom: 15px;
-  background: #00acc1;
+  background: #3f51b5;
 }
 
 .board-title{
@@ -13,32 +13,33 @@ header{
   font-size: 24px;
 }
 
-.menu-button md-icon{
-  vertical-align: inherit;
-}
-
 .app-list{
   width: 260px;
-  padding: 10px;
+  padding: 10px 2px 10px 10px;
   border-radius: 5px;
-  float: left;
-  margin: 0 10px;
-  background-color: #5ddef4;
-  height: 100%;
+  margin: 0 10px 15px;
+  background-color: #757de8;
+  max-height: 90%;
+  vertical-align: top;
+}
+
+.create-list-form{
+  margin: 10px 15px;
 }
 
 .create-button {
-  margin: 20px 15px;
   text-decoration: underline;
   display: inline-block;
   width: 260px;
 }
 
 .lists-wrapper {
-  overflow-y: auto;
-  display: flex;
+  height: calc(100vh - 110px);
+  overflow-x: auto;
+  white-space: nowrap;
 }
 
 .lists-wrapper > * {
-  flex: none;
+  display: inline-flex;
+  flex-direction: column;
 }
