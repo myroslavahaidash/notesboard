@@ -32,7 +32,7 @@ export class MoveListDialogComponent implements OnInit {
 
   moveList(){
     this.boardsService.moveList(this.data.list, this.selectedBoard);
-    this.snackBar.open('List was moved to ' + this.selectedBoard.title , '', {
+    this.snackBar.open(`List was moved to ${this.selectedBoard.title}` , '', {
       duration: 2000
     });
     this.dialogRef.close();

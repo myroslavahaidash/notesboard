@@ -44,7 +44,7 @@ export class MoveNoteDialogComponent implements OnInit {
   moveNote(){
     this.boardsService.moveNote(this.data.note, this.data.boardId, this.selectedList);
     this.dialogRef.close();
-    this.snackBar.open('Note was moved to ' + this.selectedList.title + ' in ' + this.selectedBoard.title , '', {
+    this.snackBar.open(`Note was moved to ${this.selectedList.title} in ${this.selectedBoard.title}` , '', {
       duration: 3000,
     });
   }
